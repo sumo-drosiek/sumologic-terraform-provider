@@ -8,6 +8,7 @@ import (
 type HTTPSource struct {
 	Source
 	MessagePerRequest bool   `json:"messagePerRequest"`
+	ContentType       string `json:"contentType,omitempty"`
 	URL               string `json:"url,omitempty"`
 }
 

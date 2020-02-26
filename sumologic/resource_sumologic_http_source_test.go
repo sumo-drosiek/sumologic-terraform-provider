@@ -36,6 +36,7 @@ func TestAccSumologicHTTPSourceUpdate(t *testing.T) {
 					resource.TestCheckResourceAttr("sumologic_http_source.http", "description", "test_desc"),
 					resource.TestCheckResourceAttr("sumologic_http_source.http", "message_per_request", "false"),
 					resource.TestCheckResourceAttr("sumologic_http_source.http", "category", "source/category"),
+					resource.TestCheckResourceAttr("sumologic_http_source.traces", "content_type", "Zipkin"),
 				),
 			},
 			{
@@ -92,6 +93,14 @@ resource "sumologic_http_source" "http" {
   message_per_request = false
   category = "source/category"
   collector_id = "${sumologic_collector.test.id}"
+}
+
+resource "sumologic_http_source" "traces" {
+  name = "test_http_traces"
+  description = "test_desc_traces"
+  message_per_request = false
+  collector_id = "${sumologic_collector.test.id}"
+  content_type = "Zipkin"
 }
 `
 

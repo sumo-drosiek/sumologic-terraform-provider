@@ -22,6 +22,10 @@ func resourceSumologicHTTPSource() *schema.Resource {
 		ForceNew: false,
 		Default:  false,
 	}
+	httpSource.Schema["content_type"] = &schema.Schema{
+		Type:     schema.TypeString,
+		Optional: true,
+	}
 	httpSource.Schema["url"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: true,
