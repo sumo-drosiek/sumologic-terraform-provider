@@ -22,10 +22,6 @@ func resourceSumologicHTTPSource() *schema.Resource {
 		ForceNew: false,
 		Default:  false,
 	}
-	httpSource.Schema["content_type"] = &schema.Schema{
-		Type:     schema.TypeString,
-		Optional: true,
-	}
 	httpSource.Schema["url"] = &schema.Schema{
 		Type:     schema.TypeString,
 		Computed: true,
@@ -85,7 +81,6 @@ func resourceToHTTPSource(d *schema.ResourceData) HTTPSource {
 	httpSource := HTTPSource{
 		Source:            source,
 		MessagePerRequest: d.Get("message_per_request").(bool),
-		ContentType:       d.Get("content_type").(string),
 	}
 
 	return httpSource
@@ -110,7 +105,6 @@ func resourceSumologicHTTPSourceRead(d *schema.ResourceData, meta interface{}) e
 
 	resourceSumologicSourceRead(d, source.Source)
 	d.Set("message_per_request", source.MessagePerRequest)
-	d.Set("content_type", source.ContentType)
 	d.Set("url", source.URL)
 
 	return nil
