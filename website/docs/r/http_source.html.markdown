@@ -30,7 +30,6 @@ resource "sumologic_collector" "collector" {
 In addition to the common properties, the following arguments are supported:
 
 - `message_per_request` - (Optional) When set to `true`, will create one log message per HTTP request.
-- `content_type` - (Optional) When set to `Zipkin`, the HTTP endpoint (see below) will be handling traces in zipkin format (json only).
 
 The following attributes are exported:
 
