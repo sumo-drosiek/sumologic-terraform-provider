@@ -191,6 +191,7 @@ func resourceSumologicSource() *schema.Resource {
 			"content_type": {
 				Type:     schema.TypeString,
 				Optional: true,
+				Default:  nil,
 			},
 		},
 	}
